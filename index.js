@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import SortableList from './sortableList';
-import { arrayMove } from 'react-sortable-hoc';
+import { arrayMove, SortableElement } from 'react-sortable-hoc';
+const SortableItem1 = SortableElement(({ value }) => <li>{value}</li>);
 class App extends Component {
   constructor(props) {
     super(props);
@@ -40,9 +41,13 @@ class App extends Component {
 
   render() {
     return (
-      <SortableList items={this.state.items} onSortEnd={this.onSortEnd} />
-      // {/* {comp} */}
-      // </SortableList>
+      <SortableList
+        items={this.state.items}
+        onSortEnd={this.onSortEnd}
+        itemCard={}
+      >
+ {SortableItem1}
+       </SortableList>
     );
   }
 }
